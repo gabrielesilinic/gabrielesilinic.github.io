@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        Autore: Gabriele Silingardi
+        Note: Questa pagina è il risultato di pura sperimentazione ne creare un sito cui (specialmente)
+              il menù fosse privo di javascript
+
+    -->
     <title>Document</title>
     <style>
+        :root{
+            --page-len: 400vh;/*these are the horizontal lenghts of the menu and the body            */
+            --menu-len: 100vh;/*when you want to make a normal website set --menu-len to 100vh       */
+                              /*and --page-len to 110vh or more, but if you want to make a page      */
+                              /*without any scrolling then set both --page-len and --menu-len to 90vh*/
+        }
         body{
             background-color: rgb(253, 124, 189);
             font-size: 2vw;
+            font-family: sans-serif;
             padding: 0;
             margin: 0;
+            writing-mode: horizontal-rl;
+            position: relative;
+            height: var(--page-len);
         }
         div{
             box-sizing: border-box;
@@ -17,38 +33,93 @@
         }
         .top{
             width: 100%;
-            height: 9vh;
+            height: 10vh;
         }
         .left{
             float: left;
             left: 0;
-            width: 4%;
-            height: 89vh;
+            top: 0;
+            position: sticky;
+            overflow: hidden;
+            position: -webkit-sticky;
+            width: 5%;
+            height: var(--menu-len);
             transition: 0.2s ease-in-out;
             font-size: 0.5vw;
         }
         .center{
-            height: 100%;
+            position:static;
         }
-        .right{
+        /*.right{
             float: right;
             right: 0;
             width: 4%;
-            height: 89vh;
+            height: --page-len;
             transition: 0.2s ease-in-out;
             font-size: 0.5vw;
-            
         }
-        .right:hover,.left:hover{
+        .right:hover,*/
+        .left:hover{
             width: 25%;
             font-size: 2vw;
+        }
+        .menuelement {
+            box-sizing: border-box;
+            margin-top: 0%;
+            margin-bottom: 0%;
+            width: 70%;
+            position: relative;
+            margin-left: 20%;
+            background-color: inherit;
+            color: black;
+            text-decoration: none;
+        }
+        .menuelement:not(div.menuelement){
+            margin: 0;/*i added this because i noticed how when i put a div into a url with 
+                        and both have as class "menuelement" the margin gets "duplicated" and
+                         then everithing goes in a new line this causes a bigger space between
+                          ordinary elements (simple) and url elements
+                        */
+        }
+        
+        .menuelement:hover{
+            filter: grayscale(50%);
+        }
+        .left > .menuelement{
+            visibility:hidden;
+            transition: 0.2s;
+        }
+        .left:hover > .menuelement{
+            visibility: visible;
+        }
+        .left > div > .menulogo{
+            transform-origin: center;
+            transform: rotate(0deg);
+            width: 3vw;
+            transition: 0.2s ease-in-out;
+        }
+        .left:hover > div > .menulogo{
+            transform: rotate(90deg);
         }
     </style>
 </head>
 <body>
-    <div style="background-color: khaki;" class="top">top</div>
-    <div style="background-color: indigo;" class="left">left</div>
-    <div style="background-color: indianred" class="right">right</div>
-    <div style="background-color: hotpink;" class="center">center</div>
+    <div style="background-color: khaki;" class="top">
+        top
+    </div>
+    <div style="background-color: indigo; align-content: center; padding: 0;" class="left">
+        <div style="position: relative; margin: 0; width: 100%; align-content: center; text-align: center;">
+            <img class="menulogo" src="./menu-24px.svg" style="width: 3vw;"/>
+        </div>
+        <br>
+        <div class="menuelement">Element1</div><br>
+        <div class="menuelement">Element2</div><br>
+        <a class="menuelement" href="https://www.youtube.com"><div class="menuelement">Youtube</div></a><br>
+        <a class="menuelement" href="https://www.wikipedia.org"><div class="menuelement">Wikipedia</div></a>
+    </div>
+    <!--<div style="background-color: indianred;" class="right">right</div>-->
+    <div style="background-color: hotpink;" class="center">
+        center
+    </div>
 </body>
 </html>
