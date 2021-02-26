@@ -16,9 +16,11 @@
             --menu-len: 100vh;/*when you want to make a normal website set --menu-len to 100vh       */
                               /*and --page-len to 110vh or more, but if you want to make a page      */
                               /*without any scrolling then set both --page-len and --menu-len to 90vh*/
+            --df-font-color: #ececec;
         }
         body{
-            background-color: blueviolet;
+            background-color: #222222;
+            color: whitesmoke;
             font-size: 2vw;
             font-family: sans-serif;
             padding: 0;
@@ -86,6 +88,7 @@
             -ms-user-select: inherit;
             -moz-user-select: inherit;
             user-select: inherit;
+            color: inherit;
         }
         .menuelement:not(div.menuelement){
             margin: 0;/*i added this because i noticed how when i put a div into a url with 
@@ -115,15 +118,19 @@
         .left:hover > div > .menulogo{
             transform: rotate(90deg);
         }
+        .centercontnent{
+            text-align: justify;
+        }
     </style>
 </head>
 <body>
-    <div style="background-color: khaki;" class="top">
+    <div style="background-color:#1b1b1b;" class="top">
         top
     </div>
-    <div style="background-color: indigo; align-content: center; padding: 0;" class="left">
+    <div style="background-color:#282829; align-content: center; padding: 0;" class="left">
         <div style="position: relative; margin: 0; width: 100%; align-content: center; text-align: center;">
             <img class="menulogo" src="./menu-24px.svg" alt="menu icon"/>
+            <div class="menulogo" style="mask-image: url(./menu-24px.svg);mask-size: contain;"></div>
         </div>
         <br>
         <div class="menuelement">Element1</div><br>
@@ -137,7 +144,7 @@
         </a>
     </div>
     <!--<div style="background-color: indianred;" class="right">right</div>-->
-    <div style="background-color: blueviolet;" class="center">
+    <div style="background-color:#222222;" class="center">
         center
     </div>
 </body>
