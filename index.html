@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,17 @@
     -->
     <title>Document</title>
     <style>
-        :root{
-            --page-len: 400vh;/*these are the horizontal lenghts of the menu and the body            */
-            --menu-len: 100vh;/*when you want to make a normal website set --menu-len to 100vh       */
-                              /*and --page-len to 110vh or more, but if you want to make a page      */
-                              /*without any scrolling then set both --page-len and --menu-len to 90vh*/
+        :root {
+            --page-len: 400vh;
+            /*these are the horizontal lenghts of the menu and the body            */
+            --menu-len: 100vh;
+            /*when you want to make a normal website set --menu-len to 100vh       */
+            /*and --page-len to 110vh or more, but if you want to make a page      */
+            /*without any scrolling then set both --page-len and --menu-len to 90vh*/
             --df-font-color: #ececec;
         }
-        body{
+
+        body {
             background-color: #222222;
             color: whitesmoke;
             font-size: 2vw;
@@ -29,38 +33,54 @@
             position: relative;
             height: var(--page-len);
         }
-        .left::selection,.top::selection, .menuelement::selection{
+
+        .left::selection,
+        .top::selection,
+        .menuelement::selection {
             background-color: transparent;
         }
-        div{
+
+        div {
             box-sizing: border-box;
             padding: 1%;
         }
-        .top{
+
+        .top {
             width: 100%;
             height: 10vh;
         }
-        .left{
+        
+        .left {
             float: left;
             left: 0;
             top: 0;
             position: -webkit-sticky;
             position: sticky;
-            overflow: hidden;
+            overflow: visible;
             width: 5%;
             height: var(--menu-len);
             transition: 0.2s ease-in-out;
             font-size: 0.5vw;
+            background-color: #282829;
+            align-content: center;
+            padding: 0;
+            z-index: inherit;
         }
-        .left, .top{
-            -webkit-user-select:none;
+
+        .left,
+        .top {
+            -webkit-user-select: none;
             -ms-user-select: none;
             -moz-user-select: none;
             user-select: none;
         }
-        .center{
-            position:static;
+
+        .center {
+            box-sizing: border-box;
+            position: relative;
+            z-index: -1;
         }
+
         /*.right{
             float: right;
             right: 0;
@@ -70,66 +90,99 @@
             font-size: 0.5vw;
         }
         .right:hover,*/
-        .left:hover{
+        .left:hover {
             width: 25%;
             font-size: 2vw;
         }
+
         .menuelement {
             box-sizing: border-box;
+            position: relative;
             margin-top: 0%;
             margin-bottom: 0%;
             width: 70%;
-            position: relative;
             margin-left: 20%;
             background-color: inherit;
-            color: black;
             text-decoration: none;
-            -webkit-user-select:inherit;
+            -webkit-user-select: inherit;
             -ms-user-select: inherit;
             -moz-user-select: inherit;
             user-select: inherit;
             color: inherit;
         }
-        .menuelement:not(div.menuelement){
-            margin: 0;/*i added this because i noticed how when i put a div into a url with 
+
+        .menuelement:not(div.menuelement) {
+            margin: 0;
+            /*i added this because i noticed how when i put a div into a url with 
                         and both have as class "menuelement" the margin gets "duplicated" and
                          then everithing goes in a new line this causes a bigger space between
                           ordinary elements (simple) and url elements
                         */
         }
-        
-        .menuelement:hover{
-            filter: grayscale(50%);
+
+        .menuelement:hover {
+            filter: invert(10%);
         }
-        .left > .menuelement{
-            visibility:hidden;
-            transition: 0.2s;
+
+        .left>.menuelement {
+            visibility: hidden;
+            transition: 0.2s ease-in-out;
         }
-        .left:hover > .menuelement{
+
+        .left:hover>.menuelement {
             visibility: visible;
         }
-        .menulogo{
+
+        .left+.center {
+            transition: 0.5s ease;
+        }
+
+        .left:hover+.center {
+            filter: blur(2px);
+        }
+
+        .menulogo {
             width: 3vw;
             transform-origin: center;
             transform: rotate(0deg);
             width: 3vw;
             transition: 0.2s ease-in-out;
         }
-        .left:hover > div > .menulogo{
+
+        .left:hover>div>.menulogo {
             transform: rotate(90deg);
         }
-        .centercontnent{
+
+        .centercontainer {
+            position: static;
+            align-content: center;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            z-index: inherit;
+        }
+
+        .centercontnent {
+            box-sizing: border-box;
+            position: relative;
             text-align: justify;
+            left: 10vw;
+            width: 85vw;
+            background-color: #292930;
+            border-radius: 1em;
+            z-index: inherit;
         }
     </style>
 </head>
+
 <body>
     <div style="background-color:#1b1b1b;" class="top">
         top
     </div>
-    <div style="background-color:#282829; align-content: center; padding: 0;" class="left">
+    <div class="left">
         <div style="position: relative; margin: 0; width: 100%; align-content: center; text-align: center;">
-            <img class="menulogo" src="./menu-24px.svg" alt="menu icon"/>
+            <img class="menulogo" src="./menu-24px.svg" alt="menu icon" />
             <div class="menulogo" style="mask-image: url(./menu-24px.svg);mask-size: contain;"></div>
         </div>
         <br>
@@ -145,7 +198,18 @@
     </div>
     <!--<div style="background-color: indianred;" class="right">right</div>-->
     <div style="background-color:#222222;" class="center">
-        center
+        <div class="centercontainer">
+            <div class="centercontnent">
+                <h1>Lorem Ipsum</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ducimus ut iusto, optio hic doloremque possimus quasi beatae deleniti.
+                    Doloremque veniam ullam voluptatibus atque iusto.
+                    Voluptatum nisi dolorem repellendus corrupti maxime!
+                </p>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
